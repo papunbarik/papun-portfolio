@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Papun Barik — Data Analyst & Business Intelligence Specialist</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Inter"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            surface: {
+              50: '#f8fafc',
+              100: '#f1f5f9',
+              200: '#e2e8f0',
+              800: '#1e293b',
+              900: '#0f172a',
+              950: '#090d16',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Ambient background gradient & subtle dot pattern */
+    .bg-canvas-pattern {
+      background-color: #f6f8fb;
+      background-image: 
+        radial-gradient(at 10% 12%, rgba(224, 236, 252, 0.7) 0px, transparent 55%),
+        radial-gradient(at 88% 20%, rgba(237, 242, 251, 0.8) 0px, transparent 50%),
+        radial-gradient(at 50% 75%, rgba(228, 238, 250, 0.6) 0px, transparent 65%);
+    }
+
+    .dark .bg-canvas-pattern {
+      background-color: #0b0f17;
+      background-image: 
+        radial-gradient(at 15% 15%, rgba(23, 37, 84, 0.25) 0px, transparent 55%),
+        radial-gradient(at 85% 25%, rgba(30, 41, 59, 0.35) 0px, transparent 50%),
+        radial-gradient(at 50% 80%, rgba(15, 23, 42, 0.5) 0px, transparent 60%);
+    }
+
+    /* Subtle hairline rules */
+    .hairline-b {
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+    }
+    .dark .hairline-b {
+      border-bottom: 1px solid rgba(30, 41, 59, 0.8);
+    }
+    
+    .hairline-t {
+      border-top: 1px solid rgba(226, 232, 240, 0.8);
+    }
+    .dark .hairline-t {
+      border-top: 1px solid rgba(30, 41, 59, 0.8);
+    }
+
+    /* Elevated executive cards */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(219, 228, 240, 0.8);
+      box-shadow: 0 1px 3px 0 rgba(15, 23, 42, 0.03), 0 1px 2px -1px rgba(15, 23, 42, 0.03);
+    }
+    .dark .glass-card {
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(30, 41, 59, 0.85);
+      box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.35);
+    }
+
+    /* Custom subtle scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    .dark ::-webkit-scrollbar-thumb {
+      background: #334155;
+    }
+  </style>
+</head>
+
+<body class="bg-canvas-pattern text-slate-800 dark:text-slate-100 min-h-screen selection:bg-slate-900 selection:text-white dark:selection:bg-slate-100 dark:selection:text-slate-900 transition-colors duration-200">
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-16 opacity-0 transition-all duration-200 ease-out bg-slate-900 text-white dark:bg-white dark:text-slate-900 text-xs font-mono font-medium px-4 py-2.5 rounded shadow-lg flex items-center gap-2 pointer-events-none">
+    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+    <span id="toast-text">Copied to clipboard</span>
+  </div>
+
+  <!-- NAVIGATION -->
+  <header class="sticky top-0 z-40 bg-[#f6f8fb]/85 dark:bg-[#0b0f17]/85 backdrop-blur-md hairline-b">
+    <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+      
+      <a href="#hero" class="flex items-center gap-2.5 text-sm font-semibold tracking-tight">
+        <span class="w-7 h-7 rounded bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 text-xs font-mono font-bold flex items-center justify-center shadow-sm">P</span>
+        <span class="text-slate-900 dark:text-white font-medium">Papun Barik</span>
+        <span class="text-xs font-mono text-slate-500 font-normal hidden sm:inline">/ Data & BI Analyst</span>
+      </a>
+
+      <!-- Desktop Links -->
+      <nav class="hidden md:flex items-center space-x-7 text-xs font-medium text-slate-600 dark:text-slate-400">
+        <a href="#about" class="hover:text-slate-900 dark:hover:text-white transition-colors">About</a>
+        <a href="#experience" class="hover:text-slate-900 dark:hover:text-white transition-colors">Experience</a>
+        <a href="#competencies" class="hover:text-slate-900 dark:hover:text-white transition-colors">Competencies</a>
+        <a href="#projects" class="hover:text-slate-900 dark:hover:text-white transition-colors">Projects</a>
+        <a href="#credentials" class="hover:text-slate-900 dark:hover:text-white transition-colors">Credentials</a>
+      </nav>
+
+      <!-- Utility Controls -->
+      <div class="flex items-center gap-2.5">
+        <!-- Theme Toggle -->
+        <button id="theme-toggle" class="w-8 h-8 rounded border border-slate-200/90 dark:border-slate-800 bg-white/70 dark:bg-slate-900/70 text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white flex items-center justify-center transition-colors text-xs" title="Toggle Theme" aria-label="Toggle Theme">
+          <i id="theme-icon" class="fa-regular fa-moon"></i>
+        </button>
+
+        <a href="mailto:popunbarik9@gmail.com" class="hidden sm:inline-flex items-center gap-2 px-3.5 py-1.5 rounded bg-slate-900 hover:bg-slate-800 dark:bg-slate-100 dark:hover:bg-white text-white dark:text-slate-900 text-xs font-medium transition-all shadow-sm">
+          <span>Get in touch</span>
+        </a>
+
+        <!-- Mobile hamburger -->
+        <button id="mobile-toggle" class="md:hidden p-1.5 text-slate-600 dark:text-slate-300">
+          <i class="fa-solid fa-bars text-sm"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Dropdown -->
+    <div id="mobile-nav" class="hidden md:hidden px-6 py-4 bg-white/95 dark:bg-[#0b0f17]/95 backdrop-blur hairline-b text-xs space-y-3 font-medium">
+      <a href="#about" class="block text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white mobile-link">About</a>
+      <a href="#experience" class="block text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white mobile-link">Experience</a>
+      <a href="#competencies" class="block text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white mobile-link">Competencies</a>
+      <a href="#projects" class="block text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white mobile-link">Projects</a>
+      <a href="#credentials" class="block text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white mobile-link">Credentials</a>
+      <a href="mailto:popunbarik9@gmail.com" class="block pt-2 text-slate-900 dark:text-white font-semibold">popunbarik9@gmail.com</a>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-6">
+    
+    <!-- 1. HERO SECTION -->
+    <section id="hero" class="pt-20 pb-16">
+      
+      <!-- Top Status Pill -->
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-blue-200/70 dark:border-blue-900/40 bg-blue-50/70 dark:bg-blue-950/30 text-[11px] font-mono text-slate-700 dark:text-slate-300 mb-8 shadow-sm">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+        <span>Actively seeking Data Analyst & BI opportunities</span>
+      </div>
+
+      <div class="space-y-4 max-w-3xl">
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-900 dark:text-white leading-[1.15]">
+          Hi, I'm Papun — a Data Analyst who loves turning messy data into clear decisions.
+        </h1>
+        <p class="text-lg sm:text-xl font-medium text-slate-800 dark:text-slate-200 leading-snug">
+          I bridge numbers, business context, and automation to help teams work smarter.
+        </p>
+        <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed font-normal">
+          After 3.5+ years working in ad operations and campaign quality assurance at MediaMint, I’m focused full-time on Data Analytics and Business Intelligence. I spend my days writing clean <span class="text-slate-900 dark:text-slate-100 font-medium">SQL</span>, analyzing data with <span class="text-slate-900 dark:text-slate-100 font-medium">Python & Pandas</span>, and building interactive <span class="text-slate-900 dark:text-slate-100 font-medium">Power BI & Excel</span> dashboards that anyone can actually understand.
+        </p>
+      </div>
+
+      <!-- Quick Action Strip -->
+      <div class="mt-8 flex flex-wrap items-center gap-3 text-xs font-mono">
+        <a href="https://linkedin.com/in/papun-barik" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-md border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/80 hover:bg-white dark:hover:bg-slate-800 transition-all text-slate-700 dark:text-slate-300 shadow-sm">
+          <i class="fa-brands fa-linkedin text-sm text-[#0077b5]"></i>
+          <span>linkedin.com/in/papun-barik</span>
+        </a>
+
+        <button onclick="copyToClipboard('popunbarik9@gmail.com', 'Email copied to clipboard')" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-md border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/80 hover:bg-white dark:hover:bg-slate-800 transition-all text-slate-700 dark:text-slate-300 shadow-sm">
+          <i class="fa-regular fa-copy text-slate-400"></i>
+          <span>popunbarik9@gmail.com</span>
+        </button>
+
+        <span class="inline-flex items-center gap-2 px-3 py-2 text-slate-500 dark:text-slate-400">
+          <i class="fa-solid fa-location-dot text-slate-400"></i>
+          <span>Rourkela / Hyderabad, India</span>
+        </span>
+      </div>
+
+      <!-- Key Quantitative Proof Points -->
+      <div class="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-3">
+        
+        <div class="glass-card rounded-lg p-5">
+          <div class="text-2xl font-mono font-semibold tracking-tight text-slate-900 dark:text-white">3.5+</div>
+          <div class="text-[11px] font-mono text-slate-500 dark:text-slate-400 uppercase tracking-wider mt-1">Years Data & Ops Exp</div>
+        </div>
+
+        <div class="glass-card rounded-lg p-5">
+          <div class="text-2xl font-mono font-semibold tracking-tight text-slate-900 dark:text-white">100%</div>
+          <div class="text-[11px] font-mono text-slate-500 dark:text-slate-400 uppercase tracking-wider mt-1">Data Precision & QA</div>
+        </div>
+
+        <div class="glass-card rounded-lg p-5">
+          <div class="text-2xl font-mono font-semibold tracking-tight text-slate-900 dark:text-white">90%+</div>
+          <div class="text-[11px] font-mono text-slate-500 dark:text-slate-400 uppercase tracking-wider mt-1">Pipeline Automation</div>
+        </div>
+
+        <div class="glass-card rounded-lg p-5">
+          <div class="text-2xl font-mono font-semibold tracking-tight text-slate-900 dark:text-white">3x</div>
+          <div class="text-[11px] font-mono text-slate-500 dark:text-slate-400 uppercase tracking-wider mt-1">SPOT Award Winner</div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- 1.5 ABOUT SECTION (Data Analyst Focused) -->
+    <section id="about" class="py-14 hairline-t">
+      <div class="flex items-center justify-between mb-8">
+        <h2 class="text-xs font-mono uppercase tracking-widest text-slate-500 dark:text-slate-400">About Me</h2>
+        <span class="text-xs font-mono text-slate-500 dark:text-slate-400">My Story</span>
+      </div>
+
+      <div class="glass-card rounded-lg p-6 sm:p-8 space-y-6">
+        <div class="space-y-4 text-sm sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed">
+          <p>
+            For the past 3.5 years at MediaMint, my daily job has been making sure complex campaign numbers, budgets, and delivery logs add up without errors. Along the way, I realized that what I enjoy most isn't just checking numbers—it's digging into why they change, spotting hidden patterns, and building simple tools to automate the boring, repetitive tasks.
+          </p>
+          <p>
+            I write clean SQL queries, clean up chaotic spreadsheets using Python and Pandas, and design simple, visual Power BI dashboards that help colleagues make decisions without getting lost in rows of data. I hold an MCA degree and I'm currently looking for a full-time <strong class="text-slate-900 dark:text-white font-semibold">Data Analyst or Business Intelligence</strong> role where I can solve real business problems and help people understand their data better.
+          </p>
+        </div>
+
+        <!-- Strategic Core Pillars -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4 hairline-t">
+          <div class="p-3.5 rounded border border-slate-200/70 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/40">
+            <div class="text-xs font-mono font-semibold text-slate-900 dark:text-white flex items-center gap-1.5 mb-1.5">
+              <i class="fa-solid fa-database text-blue-500 text-[11px]"></i>
+              <span>SQL</span>
+            </div>
+            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+              Writing clean queries, joins, aggregations, window functions, and transforming raw records into clear summary tables.
+            </p>
+          </div>
+
+          <div class="p-3.5 rounded border border-slate-200/70 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/40">
+            <div class="text-xs font-mono font-semibold text-slate-900 dark:text-white flex items-center gap-1.5 mb-1.5">
+              <i class="fa-brands fa-python text-amber-500 text-[11px]"></i>
+              <span>Python & Pandas</span>
+            </div>
+            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+              Cleaning messy datasets, handling missing values, exploratory analysis (EDA), and removing duplicate data.
+            </p>
+          </div>
+
+          <div class="p-3.5 rounded border border-slate-200/70 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/40">
+            <div class="text-xs font-mono font-semibold text-slate-900 dark:text-white flex items-center gap-1.5 mb-1.5">
+              <i class="fa-solid fa-chart-pie text-emerald-500 text-[11px]"></i>
+              <span>Power BI & Excel</span>
+            </div>
+            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+              Building interactive dashboards, pivot tables, DAX measures, and clear business visuals that tell a clear story.
+            </p>
+          </div>
+
+          <div class="p-3.5 rounded border border-slate-200/70 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/40">
+            <div class="text-xs font-mono font-semibold text-slate-900 dark:text-white flex items-center gap-1.5 mb-1.5">
+              <i class="fa-solid fa-bolt text-indigo-500 text-[11px]"></i>
+              <span>Workflow Automation</span>
+            </div>
+            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+              Using Google Apps Script and automated alerts to eliminate hours of repetitive manual data entry.
+            </p>
+          </div>
+        </div>
+
+        <div class="pt-2 text-xs font-mono text-slate-500 dark:text-slate-400 flex items-center gap-2">
+          <i class="fa-solid fa-arrow-right text-blue-500"></i>
+          <span><strong>What I'm looking for:</strong> Full-time roles as a Data Analyst or BI Analyst, open to remote work and relocation.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. WORK EXPERIENCE -->
+    <section id="experience" class="py-14 hairline-t">
+      <div class="flex items-center justify-between mb-8">
+        <h2 class="text-xs font-mono uppercase tracking-widest text-slate-500 dark:text-slate-400">Work Experience</h2>
+        <span class="text-xs font-mono text-slate-500 dark:text-slate-400">06/2023 — Present</span>
+      </div>
+
+      <div class="space-y-4">
+        <div class="glass-card rounded-lg p-6 sm:p-7">
+          
+          <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-4">
+            <div>
+              <h3 class="text-base font-semibold text-slate-900 dark:text-white">Associate 2 — Quality Analyst</h3>
+              <p class="text-xs font-mono text-slate-500 dark:text-slate-400 mt-0.5">MediaMint • Hyderabad, India</p>
+            </div>
+            <span class="text-[11px] font-mono text-slate-500 dark:text-slate-400">Full-time</span>
+          </div>
+
+          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-5">
+            I review campaign data, verify targeting setups, and make sure ad delivery numbers match what clients paid for. Alongside daily checks, I create automated tools and reports in SQL, Python, Excel, and Power BI so our team can catch errors faster and deliver accurate work.
+          </p>
+
+          <ul class="space-y-2.5 text-xs text-slate-600 dark:text-slate-300 font-sans leading-relaxed">
+            <li class="flex items-start gap-2.5">
+              <span class="text-slate-400 dark:text-slate-600 font-mono select-none">—</span>
+              <span>Audited and verified media plans and delivery data across <strong>DV360, Google Ads, and Meta Ads</strong> to prevent billing mistakes and targeting mismatches.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-slate-400 dark:text-slate-600 font-mono select-none">—</span>
+              <span>Tracked core KPIs like CTR, CPM, impressions, and ad spend on a daily basis to catch performance drops and pacing issues early.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-slate-400 dark:text-slate-600 font-mono select-none">—</span>
+              <span>Built custom analysis sheets and automated scripts using <strong>SQL, Python, and Excel</strong> to cut down hours of manual verification for our team.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-slate-400 dark:text-slate-600 font-mono select-none">—</span>
+              <span>Created an automated Google Sheets and Apps Script tool that tracks approval emails and deadlines, saving our 20+ member team over an hour each day.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-slate-400 dark:text-slate-600 font-mono select-none">—</span>
+              <span>Honored with <strong>3 SPOT Awards</strong> for consistent accuracy, dependable turnaround speed, and strong teamwork.</span>
+            </li>
+          </ul>
+
+          <div class="mt-6 pt-5 hairline-t flex flex-wrap gap-1.5 font-mono text-[11px]">
+            <span class="px-2.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200/60 dark:border-slate-700/60">SQL & Data Audits</span>
+            <span class="px-2.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200/60 dark:border-slate-700/60">Python Data Cleaning</span>
+            <span class="px-2.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200/60 dark:border-slate-700/60">Power BI Reporting</span>
+            <span class="px-2.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200/60 dark:border-slate-700/60">Campaign QA</span>
+            <span class="px-2.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200/60 dark:border-slate-700/60">DV360 & Google Ads</span>
+            <span class="px-2.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200/60 dark:border-slate-700/60">Google Apps Script</span>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. CORE COMPETENCIES -->
+    <section id="competencies" class="py-14 hairline-t">
+      <div class="mb-8">
+        <h2 class="text-xs font-mono uppercase tracking-widest text-slate-500 dark:text-slate-400">Skills & Tools</h2>
+        <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">The practical technologies and tools I use every day to work with data.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        
+        <!-- Media & AdTech -->
+        <div class="glass-card rounded-lg p-5">
+          <div class="text-xs font-mono font-medium text-slate-900 dark:text-white uppercase tracking-wider pb-3 hairline-b flex items-center justify-between">
+            <span>Ad Platforms & Operations</span>
+            <i class="fa-solid fa-bullseye text-slate-400 text-xs"></i>
+          </div>
+          <div class="mt-4 space-y-2 text-xs text-slate-600 dark:text-slate-300">
+            <div class="flex items-center justify-between">
+              <span>Display & Video 360 (DV360)</span>
+              <span class="font-mono text-[10px] text-slate-500 dark:text-slate-400">Daily Use</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span>Google Ad Manager (GAM)</span>
+              <span class="font-mono text-[10px] text-slate-500 dark:text-slate-400">Core</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span>Google Ads & Meta Ads</span>
+              <span class="font-mono text-[10px] text-slate-500 dark:text-slate-400">Hands-on</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span>Operative One (OP1)</span>
+              <span class="font-mono text-[10px] text-slate-500 dark:text-slate-400">Order QA</span>
+            </div>
+            <div class="pt-2 hairline-t text-slate-500 dark:text-slate-400 text-[11px] leading-relaxed">
+              Campaign verification • Budget checks • Delivery tracking • Discrepancy audits
+            </div>
+          </div>
+        </div>
+
+        <!-- Data & BI Analytics -->
+        <div class="glass-card rounded-lg p-5">
+          <div class="text-xs font-mono font-medium text-slate-900 dark:text-white uppercase tracking-wider pb-3 hairline-b flex items-center justify-between">
+            <span>Data Analytics & BI</span>
+            <i class="fa-solid fa-chart-line text-slate-400 text-xs"></i>
+          </div>
+          <div class="mt-4 space-y-2 text-xs text-slate-600 dark:text-slate-300">
+            <div class="flex items-center justify-between">
+              <span>SQL (Joins, Window Functions, Aggregations)</span>
+              <span class="font-mono text-[10px] text-slate-500 dark:text-slate-400">Core</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span>Python (Pandas, NumPy, Matplotlib)</span>
+              <span class="font-mono text-[10px] text-slate-500 dark:text-slate-400">Core</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span>Power BI (Dashboards, DAX)</span>
+              <span class="font-mono text-[10px] text-slate-500 dark:text-slate-400">Hands-on</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span>Microsoft Excel & Google Sheets</span>
+              <span class="font-mono text-[10px] text-slate-500 dark:text-slate-400">Advanced</span>
+            </div>
+            <div class="pt-2 hairline-t text-slate-500 dark:text-slate-400 text-[11px] leading-relaxed">
+              Data cleaning • Exploratory data analysis (EDA) • Trend charts • KPI tracking
+            </div>
+          </div>
+        </div>
+
+        <!-- Process Automation -->
+        <div class="glass-card rounded-lg p-5">
+          <div class="text-xs font-mono font-medium text-slate-900 dark:text-white uppercase tracking-wider pb-3 hairline-b flex items-center justify-between">
+            <span>Practical Automation</span>
+            <i class="fa-solid fa-code text-slate-400 text-xs"></i>
+          </div>
+          <div class="mt-4 space-y-2 text-xs text-slate-600 dark:text-slate-300">
+            <div class="flex items-center justify-between">
+              <span>Google Apps Script</span>
+              <span class="font-mono text-[10px] text-slate-500 dark:text-slate-400">Built Tools</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span>Email & Webhook Triggers</span>
+              <span class="font-mono text-[10px] text-slate-500 dark:text-slate-400">Hands-on</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span>Spreadsheet Formulas & Macros</span>
+              <span class="font-mono text-[10px] text-slate-500 dark:text-slate-400">Daily Use</span>
+            </div>
+            <div class="flex items-center justify-between">
+              <span>Automated Reminder Alerts</span>
+              <span class="font-mono text-[10px] text-slate-500 dark:text-slate-400">Applied</span>
+            </div>
+            <div class="pt-2 hairline-t text-slate-500 dark:text-slate-400 text-[11px] leading-relaxed">
+              Replacing manual busywork • Saving hours of copy-pasting • Error-proofing team workflows
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 4. SELECTED PROJECTS -->
+    <section id="projects" class="py-14 hairline-t">
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <h2 class="text-xs font-mono uppercase tracking-widest text-slate-500 dark:text-slate-400">Projects & Dashboards</h2>
+          <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Real tools and analytics projects I've built to make work easier and uncover insights.</p>
+        </div>
+      </div>
+
+      <div class="space-y-8">
+        
+        <!-- Project 1: SLA Automation -->
+        <div class="glass-card rounded-xl p-6 sm:p-7 transition-all duration-200 hover:border-slate-300 dark:hover:border-slate-700">
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-2 mb-4">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800/80 font-medium">Top 10 Finalist</span>
+                <span class="text-xs font-mono text-slate-500 dark:text-slate-400">MediaMint Ideathon</span>
+              </div>
+              <h3 class="text-lg font-semibold text-slate-900 dark:text-white mt-2">Email SLA & Approval Tracker</h3>
+            </div>
+            <div class="text-xs font-mono text-slate-500 dark:text-slate-400">Google Apps Script • Google Sheets • Webhooks</div>
+          </div>
+
+          <div class="space-y-3 mb-5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl">
+            <p>
+              <strong>The Problem:</strong> Our team of 20+ people was manually sorting through 100–200 approval emails every single day. Finding order numbers, checking who was working on what, and making sure we didn't miss customer deadlines took over an hour of manual tracking every morning.
+            </p>
+            <p>
+              <strong>What I Built:</strong> I wrote a Google Apps Script tool that monitors incoming emails in real-time, extracts key details (like Order IDs and client names) straight from the subject lines, assigns them to team members, and tracks response deadlines in Google Sheets. It automatically sends reminder alerts if an approval deadline is getting close.
+            </p>
+            <p>
+              <strong>The Results:</strong> It cut our daily tracking time from <strong>over 60 minutes down to just 2–5 minutes</strong>, practically eliminated missed deadlines, and was recognized as one of the <strong>Top 10 ideas across the entire company</strong> at the MediaMint Ideathon.
+            </p>
+          </div>
+
+          <!-- UI Screenshot / Mockup Preview: 100% Authentic Google Sheets Interface -->
+          <div class="rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-[#1a1f2c] shadow-sm overflow-hidden mb-6 text-slate-800 dark:text-slate-200">
+            
+            <!-- Authentic Google Sheets Top Header -->
+            <div class="px-3.5 py-2 bg-[#f9fbfd] dark:bg-[#161b26] border-b border-slate-200 dark:border-slate-800 flex items-center justify-between gap-3 select-none">
+              <div class="flex items-center gap-3 min-w-0">
+                <!-- Official Google Sheets Folded Sheet SVG Icon -->
+                <div class="w-8 h-8 shrink-0 flex items-center justify-center">
+                  <svg width="28" height="28" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M25 5H10C8.34315 5 7 6.34315 7 8V32C7 33.6569 8.34315 35 10 35H30C31.6569 35 33 33.6569 33 32V13L25 5Z" fill="#0F9D58"/>
+                    <path d="M25 5L33 13H25V5Z" fill="#87CEAC"/>
+                    <rect x="12" y="16" width="16" height="2.5" rx="0.5" fill="white"/>
+                    <rect x="12" y="21" width="16" height="2.5" rx="0.5" fill="white"/>
+                    <rect x="12" y="26" width="16" height="2.5" rx="0.5" fill="white"/>
+                    <rect x="19" y="16" width="2" height="12.5" fill="#0F9D58"/>
+                  </svg>
+                </div>
+
+                <!-- Document Title & Menus -->
+                <div class="min-w-0">
+                  <div class="flex items-center gap-2">
+                    <span class="font-normal text-xs sm:text-sm text-slate-800 dark:text-slate-100 truncate cursor-pointer hover:border-b hover:border-slate-400">Email Approval & SLA Tracker (Ideathon)</span>
+                    <button class="text-slate-400 hover:text-amber-500 transition-colors text-xs" title="Star"><i class="fa-regular fa-star"></i></button>
+                    <button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors text-xs hidden sm:inline" title="Move"><i class="fa-regular fa-folder"></i></button>
+                    <span class="text-[11px] text-slate-500 dark:text-slate-400 hidden md:inline-flex items-center gap-1 font-sans ml-1">
+                      <i class="fa-solid fa-cloud-arrow-up text-[10px]"></i> Saved to Drive
+                    </span>
+                  </div>
+
+                  <!-- Google Sheets Menu Row -->
+                  <div class="flex items-center gap-2 sm:gap-3 text-[11px] text-slate-700 dark:text-slate-300 font-sans mt-0.5">
+                    <span class="hover:bg-slate-200/70 dark:hover:bg-slate-800 px-1.5 py-0.5 rounded cursor-pointer">File</span>
+                    <span class="hover:bg-slate-200/70 dark:hover:bg-slate-800 px-1.5 py-0.5 rounded cursor-pointer">Edit</span>
+                    <span class="hover:bg-slate-200/70 dark:hover:bg-slate-800 px-1.5 py-0.5 rounded cursor-pointer">View</span>
+                    <span class="hover:bg-slate-200/70 dark:hover:bg-slate-800 px-1.5 py-0.5 rounded cursor-pointer">Insert</span>
+                    <span class="hover:bg-slate-200/70 dark:hover:bg-slate-800 px-1.5 py-0.5 rounded cursor-pointer">Format</span>
+                    <span class="hover:bg-slate-200/70 dark:hover:bg-slate-800 px-1.5 py-0.5 rounded cursor-pointer">Data</span>
+                    <span class="hover:bg-slate-200/70 dark:hover:bg-slate-800 px-1.5 py-0.5 rounded cursor-pointer">Tools</span>
+                    <span class="hover:bg-slate-200/70 dark:hover:bg-slate-800 px-1.5 py-0.5 rounded cursor-pointer font-medium text-emerald-700 dark:text-emerald-400">Extensions</span>
+                    <span class="hover:bg-slate-200/70 dark:hover:bg-slate-800 px-1.5 py-0.5 rounded cursor-pointer hidden sm:inline">Help</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Top Right Controls (Comments, Meet, Share) -->
+              <div class="flex items-center gap-2 shrink-0">
+                <button class="w-7 h-7 hidden sm:flex items-center justify-center rounded-full text-slate-600 dark:text-slate-400 hover:bg-slate-200/70 dark:hover:bg-slate-800 text-xs" title="Open comment history">
+                  <i class="fa-regular fa-message"></i>
+                </button>
+                <button class="w-7 h-7 hidden sm:flex items-center justify-center rounded-full text-slate-600 dark:text-slate-400 hover:bg-slate-200/70 dark:hover:bg-slate-800 text-xs" title="Join a call or share this tab to the call">
+                  <i class="fa-solid fa-video"></i>
+                </button>
+                <div class="px-3.5 py-1.5 rounded-full bg-[#c2e7ff] text-[#001d35] font-medium text-xs flex items-center gap-1.5 shadow-2xs hover:bg-[#b0ddff] cursor-pointer">
+                  <i class="fa-solid fa-lock text-[10px]"></i>
+                  <span>Share</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Standard Google Sheets Action Toolbar -->
+            <div class="px-3 py-1 bg-[#edf2fa] dark:bg-[#1f2637] border-b border-slate-200 dark:border-slate-700/80 flex items-center gap-1 text-slate-600 dark:text-slate-400 text-xs select-none overflow-x-auto">
+              <button class="p-1 rounded hover:bg-slate-200/80 dark:hover:bg-slate-800" title="Undo"><i class="fa-solid fa-arrow-rotate-left"></i></button>
+              <button class="p-1 rounded hover:bg-slate-200/80 dark:hover:bg-slate-800" title="Redo"><i class="fa-solid fa-arrow-rotate-right"></i></button>
+              <button class="p-1 rounded hover:bg-slate-200/80 dark:hover:bg-slate-800" title="Print"><i class="fa-solid fa-print"></i></button>
+              <button class="p-1 rounded hover:bg-slate-200/80 dark:hover:bg-slate-800" title="Paint format"><i class="fa-solid fa-paint-roller text-[11px]"></i></button>
+              <span class="h-4 w-[1px] bg-slate-300 dark:bg-slate-700 mx-1"></span>
+              <span class="px-1.5 py-0.5 rounded text-[11px] font-sans hover:bg-slate-200/80 dark:hover:bg-slate-800 cursor-pointer">100% <i class="fa-solid fa-caret-down text-[9px] ml-0.5"></i></span>
+              <span class="h-4 w-[1px] bg-slate-300 dark:bg-slate-700 mx-1"></span>
+              <button class="px-1 py-0.5 rounded text-[11px] font-sans hover:bg-slate-200/80 dark:hover:bg-slate-800">$</button>
+              <button class="px-1 py-0.5 rounded text-[11px] font-sans hover:bg-slate-200/80 dark:hover:bg-slate-800">%</button>
+              <span class="h-4 w-[1px] bg-slate-300 dark:bg-slate-700 mx-1"></span>
+              <span class="px-1.5 py-0.5 rounded text-[11px] font-sans hover:bg-slate-200/80 dark:hover:bg-slate-800 cursor-pointer">Arial <i class="fa-solid fa-caret-down text-[9px] ml-0.5"></i></span>
+              <span class="px-1.5 py-0.5 rounded text-[11px] font-sans hover:bg-slate-200/80 dark:hover:bg-slate-800 cursor-pointer">10 <i class="fa-solid fa-caret-down text-[9px] ml-0.5"></i></span>
+              <span class="h-4 w-[1px] bg-slate-300 dark:bg-slate-700 mx-1"></span>
+              <button class="p-1 rounded hover:bg-slate-200/80 dark:hover:bg-slate-800 font-bold" title="Bold">B</button>
+              <button class="p-1 rounded hover:bg-slate-200/80 dark:hover:bg-slate-800 italic" title="Italic">I</button>
+              <button class="p-1 rounded hover:bg-slate-200/80 dark:hover:bg-slate-800" title="Text color"><i class="fa-solid fa-font"></i></button>
+              <button class="p-1 rounded hover:bg-slate-200/80 dark:hover:bg-slate-800" title="Fill color"><i class="fa-solid fa-fill-drip"></i></button>
+              <span class="h-4 w-[1px] bg-slate-300 dark:bg-slate-700 mx-1"></span>
+              <button class="p-1 rounded hover:bg-slate-200/80 dark:hover:bg-slate-800" title="Borders"><i class="fa-solid fa-table-cells"></i></button>
+              <button class="p-1 rounded hover:bg-slate-200/80 dark:hover:bg-slate-800" title="Alignment"><i class="fa-solid fa-align-left"></i></button>
+              <button class="p-1 rounded hover:bg-slate-200/80 dark:hover:bg-slate-800" title="Text wrap"><i class="fa-solid fa-arrow-turn-down text-[10px]"></i></button>
+              <button class="p-1 rounded hover:bg-slate-200/80 dark:hover:bg-slate-800" title="Create a filter"><i class="fa-solid fa-filter text-[10px]"></i></button>
+            </div>
+
+            <!-- Formula Bar Row -->
+            <div class="px-3 py-1 bg-white dark:bg-[#1a1f2c] border-b border-slate-200 dark:border-slate-800 flex items-center gap-2 text-xs select-none">
+              <div class="w-12 text-center text-slate-600 dark:text-slate-300 font-mono text-[11px] font-medium border-r border-slate-200 dark:border-slate-700 pr-2">
+                B2
+              </div>
+              <div class="text-slate-400 font-serif italic text-xs px-1 select-none font-semibold">fx</div>
+              <div class="flex-1 text-slate-800 dark:text-slate-200 font-sans text-[11px] truncate">
+                =IF(ISBLANK(C2), "Pending Approval", "Logged - Within SLA")
+              </div>
+            </div>
+
+            <!-- Authentic Google Sheets Grid Table -->
+            <div class="overflow-x-auto">
+              <table class="w-full border-collapse font-sans text-xs min-w-[720px]">
+                <thead>
+                  <!-- Column Header Letters (A, B, C, D, E) -->
+                  <tr class="bg-[#f8f9fa] dark:bg-[#161c27] text-slate-600 dark:text-slate-400 font-sans text-[11px] select-none border-b border-slate-300 dark:border-slate-700">
+                    <th class="w-10 py-1 border-r border-slate-300 dark:border-slate-700 text-center font-normal"></th>
+                    <th class="w-28 py-1 border-r border-slate-300 dark:border-slate-700 font-normal">A</th>
+                    <th class="py-1 border-r border-slate-300 dark:border-slate-700 font-normal text-left px-3">B</th>
+                    <th class="w-36 py-1 border-r border-slate-300 dark:border-slate-700 font-normal">C</th>
+                    <th class="w-24 py-1 border-r border-slate-300 dark:border-slate-700 font-normal">D</th>
+                    <th class="w-32 py-1 font-normal">E</th>
+                  </tr>
+                  <!-- Column Labels Row -->
+                  <tr class="bg-[#f3f4f6] dark:bg-[#1c2333] text-slate-600 dark:text-slate-300 font-sans text-[11px] font-medium border-b border-slate-300 dark:border-slate-700">
+                    <td class="border-r border-slate-300 dark:border-slate-700 text-center text-slate-400 select-none py-1">#</td>
+                    <td class="border-r border-slate-300 dark:border-slate-700 text-center py-1">Logged Time</td>
+                    <td class="border-r border-slate-300 dark:border-slate-700 px-3 py-1">Email Subject Line</td>
+                    <td class="border-r border-slate-300 dark:border-slate-700 text-center py-1">Status</td>
+                    <td class="border-r border-slate-300 dark:border-slate-700 text-center py-1">Turnaround</td>
+                    <td class="text-center py-1">Assigned QA</td>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-200 dark:divide-slate-800 text-[11px] text-slate-800 dark:text-slate-200">
+                  
+                  <!-- Row 1: Selected active cell preview -->
+                  <tr class="hover:bg-slate-50/70 dark:hover:bg-slate-800/40">
+                    <td class="bg-[#f8f9fa] dark:bg-[#161c27] border-r border-slate-300 dark:border-slate-700 text-center text-[10px] text-slate-500 select-none py-2 font-mono">1</td>
+                    <td class="border-r border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 text-center">10:48 AM</td>
+                    <td class="border-r border-slate-200 dark:border-slate-800 px-3 relative bg-blue-50/40 dark:bg-blue-950/20">
+                      <!-- Google Sheets active cell blue outline -->
+                      <div class="absolute inset-0 border-2 border-[#1a73e8] pointer-events-none">
+                        <div class="absolute -bottom-1 -right-1 w-2 h-2 bg-[#1a73e8] border border-white"></div>
+                      </div>
+                      <span class="font-normal text-slate-900 dark:text-white">Urgent Req | Prelim Approvals | OPID 810660</span>
+                    </td>
+                    <td class="border-r border-slate-200 dark:border-slate-800 text-center">
+                      <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-red-100 text-red-700 dark:bg-red-950/70 dark:text-red-400 border border-red-200 dark:border-red-900">
+                        Urgent Action
+                      </span>
+                    </td>
+                    <td class="border-r border-slate-200 dark:border-slate-800 text-red-600 dark:text-red-400 font-medium text-center">01m 45s</td>
+                    <td class="text-slate-700 dark:text-slate-300 text-center font-normal">Papun Barik</td>
+                  </tr>
+
+                  <!-- Row 2 -->
+                  <tr class="hover:bg-slate-50/70 dark:hover:bg-slate-800/40">
+                    <td class="bg-[#f8f9fa] dark:bg-[#161c27] border-r border-slate-300 dark:border-slate-700 text-center text-[10px] text-slate-500 select-none py-2 font-mono">2</td>
+                    <td class="border-r border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 text-center">10:42 AM</td>
+                    <td class="border-r border-slate-200 dark:border-slate-800 px-3 text-slate-900 dark:text-white">
+                      Tatari | Cash App | PM Approval | 11.10.26
+                    </td>
+                    <td class="border-r border-slate-200 dark:border-slate-800 text-center">
+                      <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-950/70 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
+                        Acknowledged
+                      </span>
+                    </td>
+                    <td class="border-r border-slate-200 dark:border-slate-800 text-emerald-600 dark:text-emerald-400 text-center">Within SLA</td>
+                    <td class="text-slate-700 dark:text-slate-300 text-center font-normal">Sumair</td>
+                  </tr>
+
+                  <!-- Row 3 -->
+                  <tr class="hover:bg-slate-50/70 dark:hover:bg-slate-800/40">
+                    <td class="bg-[#f8f9fa] dark:bg-[#161c27] border-r border-slate-300 dark:border-slate-700 text-center text-[10px] text-slate-500 select-none py-2 font-mono">3</td>
+                    <td class="border-r border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 text-center">10:35 AM</td>
+                    <td class="border-r border-slate-200 dark:border-slate-800 px-3 text-slate-900 dark:text-white">
+                      Pricing/Prelim Approval_813209
+                    </td>
+                    <td class="border-r border-slate-200 dark:border-slate-800 text-center">
+                      <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-950/70 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
+                        Completed
+                      </span>
+                    </td>
+                    <td class="border-r border-slate-200 dark:border-slate-800 text-slate-500 text-center">02m 10s</td>
+                    <td class="text-slate-700 dark:text-slate-300 text-center font-normal">Laxman</td>
+                  </tr>
+
+                  <!-- Row 4 -->
+                  <tr class="hover:bg-slate-50/70 dark:hover:bg-slate-800/40">
+                    <td class="bg-[#f8f9fa] dark:bg-[#161c27] border-r border-slate-300 dark:border-slate-700 text-center text-[10px] text-slate-500 select-none py-2 font-mono">4</td>
+                    <td class="border-r border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 text-center">10:29 AM</td>
+                    <td class="border-r border-slate-200 dark:border-slate-800 px-3 text-slate-900 dark:text-white">
+                      Approval request - Blue Buffalo - 810783
+                    </td>
+                    <td class="border-r border-slate-200 dark:border-slate-800 text-center">
+                      <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-blue-100 text-blue-800 dark:bg-blue-950/70 dark:text-blue-300 border border-blue-200 dark:border-blue-800">
+                        Validated
+                      </span>
+                    </td>
+                    <td class="border-r border-slate-200 dark:border-slate-800 text-slate-500 text-center">03m 15s</td>
+                    <td class="text-slate-700 dark:text-slate-300 text-center font-normal">Sonika</td>
+                  </tr>
+
+                  <!-- Row 5 -->
+                  <tr class="hover:bg-slate-50/70 dark:hover:bg-slate-800/40">
+                    <td class="bg-[#f8f9fa] dark:bg-[#161c27] border-r border-slate-300 dark:border-slate-700 text-center text-[10px] text-slate-500 select-none py-2 font-mono">5</td>
+                    <td class="border-r border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 text-center">10:14 AM</td>
+                    <td class="border-r border-slate-200 dark:border-slate-800 px-3 text-slate-900 dark:text-white">
+                      mm approval - 812941 Nat Geo Emirates
+                    </td>
+                    <td class="border-r border-slate-200 dark:border-slate-800 text-center">
+                      <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-950/70 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
+                        Closed
+                      </span>
+                    </td>
+                    <td class="border-r border-slate-200 dark:border-slate-800 text-slate-500 text-center">01m 55s</td>
+                    <td class="text-slate-700 dark:text-slate-300 text-center font-normal">Vaishnavi</td>
+                  </tr>
+
+                  <!-- Row 6 -->
+                  <tr class="hover:bg-slate-50/70 dark:hover:bg-slate-800/40">
+                    <td class="bg-[#f8f9fa] dark:bg-[#161c27] border-r border-slate-300 dark:border-slate-700 text-center text-[10px] text-slate-500 select-none py-2 font-mono">6</td>
+                    <td class="border-r border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 text-center">09:58 AM</td>
+                    <td class="border-r border-slate-200 dark:border-slate-800 px-3 text-slate-900 dark:text-white">
+                      Re: Urgent- Req Final approval | Order ID 811314
+                    </td>
+                    <td class="border-r border-slate-200 dark:border-slate-800 text-center">
+                      <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-950/70 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
+                        Completed
+                      </span>
+                    </td>
+                    <td class="border-r border-slate-200 dark:border-slate-800 text-slate-500 text-center">02m 40s</td>
+                    <td class="text-slate-700 dark:text-slate-300 text-center font-normal">Papun Barik</td>
+                  </tr>
+
+                  <!-- Row 7 -->
+                  <tr class="hover:bg-slate-50/70 dark:hover:bg-slate-800/40">
+                    <td class="bg-[#f8f9fa] dark:bg-[#161c27] border-r border-slate-300 dark:border-slate-700 text-center text-[10px] text-slate-500 select-none py-2 font-mono">7</td>
+                    <td class="border-r border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 text-center">09:41 AM</td>
+                    <td class="border-r border-slate-200 dark:border-slate-800 px-3 text-slate-900 dark:text-white">
+                      Approval request - Firefox - 813228
+                    </td>
+                    <td class="border-r border-slate-200 dark:border-slate-800 text-center">
+                      <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-950/70 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
+                        Completed
+                      </span>
+                    </td>
+                    <td class="border-r border-slate-200 dark:border-slate-800 text-slate-500 text-center">01m 20s</td>
+                    <td class="text-slate-700 dark:text-slate-300 text-center font-normal">Sumair</td>
+                  </tr>
+
+                  <!-- Row 8 -->
+                  <tr class="hover:bg-slate-50/70 dark:hover:bg-slate-800/40">
+                    <td class="bg-[#f8f9fa] dark:bg-[#161c27] border-r border-slate-300 dark:border-slate-700 text-center text-[10px] text-slate-500 select-none py-2 font-mono">8</td>
+                    <td class="border-r border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 text-center">09:25 AM</td>
+                    <td class="border-r border-slate-200 dark:border-slate-800 px-3 text-slate-900 dark:text-white">
+                      Requesting Prelim Approval | Order ID - 792331
+                    </td>
+                    <td class="border-r border-slate-200 dark:border-slate-800 text-center">
+                      <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-950/70 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
+                        Completed
+                      </span>
+                    </td>
+                    <td class="border-r border-slate-200 dark:border-slate-800 text-slate-500 text-center">02m 05s</td>
+                    <td class="text-slate-700 dark:text-slate-300 text-center font-normal">Laxman</td>
+                  </tr>
+
+                  <!-- Row 9 -->
+                  <tr class="hover:bg-slate-50/70 dark:hover:bg-slate-800/40">
+                    <td class="bg-[#f8f9fa] dark:bg-[#161c27] border-r border-slate-300 dark:border-slate-700 text-center text-[10px] text-slate-500 select-none py-2 font-mono">9</td>
+                    <td class="border-r border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 text-center">09:12 AM</td>
+                    <td class="border-r border-slate-200 dark:border-slate-800 px-3 text-slate-900 dark:text-white">
+                      RE: Sponsorship Approval Needed | ORDER ID 813122
+                    </td>
+                    <td class="border-r border-slate-200 dark:border-slate-800 text-center">
+                      <span class="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-emerald-100 text-emerald-800 dark:bg-emerald-950/70 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800">
+                        Completed
+                      </span>
+                    </td>
+                    <td class="border-r border-slate-200 dark:border-slate-800 text-slate-500 text-center">03m 00s</td>
+                    <td class="text-slate-700 dark:text-slate-300 text-center font-normal">Sonika</td>
+                  </tr>
+
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Authentic Google Sheets Bottom Tab Bar -->
+            <div class="px-3 py-1.5 bg-[#f1f3f4] dark:bg-[#192233] border-t border-slate-300 dark:border-slate-700 flex items-center justify-between text-xs select-none">
+              <div class="flex items-center gap-1">
+                <button class="w-6 h-6 flex items-center justify-center rounded text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 text-xs" title="Add Sheet">
+                  <i class="fa-solid fa-plus text-[10px]"></i>
+                </button>
+                <button class="w-6 h-6 flex items-center justify-center rounded text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 text-xs" title="All Sheets">
+                  <i class="fa-solid fa-bars text-[10px]"></i>
+                </button>
+                <!-- Active Sheet Tab -->
+                <div class="px-3 py-1 bg-white dark:bg-[#1a1f2c] border-b-2 border-[#0F9D58] text-slate-900 dark:text-white font-medium text-[11px] flex items-center gap-1.5 shadow-2xs">
+                  <span>Email_Tracker</span>
+                  <i class="fa-solid fa-caret-down text-[9px] text-slate-400 ml-0.5"></i>
+                </div>
+                <!-- Inactive Sheet Tab -->
+                <div class="px-3 py-1 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 rounded text-[11px] cursor-pointer">
+                  SLA_Compliance_Summary
+                </div>
+                <div class="px-3 py-1 text-slate-600 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 rounded text-[11px] cursor-pointer hidden sm:block">
+                  Audit_Log
+                </div>
+              </div>
+              <div class="text-[11px] font-sans text-slate-500 dark:text-slate-400 hidden md:block">
+                100–200 Daily Approvals • Team SLA Tracker
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Impact Metrics -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div class="p-3 rounded-md border border-slate-200/60 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/40">
+              <span class="block text-[10px] font-mono uppercase text-slate-500">Time Saved</span>
+              <span class="text-sm font-mono font-semibold text-slate-900 dark:text-white">60+ mins down to &lt;5 mins daily</span>
+            </div>
+            <div class="p-3 rounded-md border border-slate-200/60 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/40">
+              <span class="block text-[10px] font-mono uppercase text-slate-500">Team Adoption</span>
+              <span class="text-sm font-mono font-semibold text-slate-900 dark:text-white">Used by 20+ team members</span>
+            </div>
+            <div class="p-3 rounded-md border border-slate-200/60 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/40">
+              <span class="block text-[10px] font-mono uppercase text-slate-500">Recognition</span>
+              <span class="text-sm font-mono font-semibold text-slate-900 dark:text-white">Top 10 Idea across MediaMint</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: Ad Campaign Performance Analysis (Power BI + SQL) -->
+        <div class="glass-card rounded-xl p-6 sm:p-7 transition-all duration-200 hover:border-slate-300 dark:hover:border-slate-700">
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-2 mb-4">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-400 border border-blue-200 dark:border-blue-800/80 font-medium">Business Intelligence</span>
+                <span class="text-xs font-mono text-slate-500 dark:text-slate-400">Independent Project</span>
+              </div>
+              <h3 class="text-lg font-semibold text-slate-900 dark:text-white mt-2">Digital Ad Campaign Performance Dashboard</h3>
+            </div>
+            <div class="text-xs font-mono text-slate-500 dark:text-slate-400">SQL • Power BI • Microsoft Excel</div>
+          </div>
+
+          <div class="space-y-3 mb-5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl">
+            <p>
+              <strong>The Problem:</strong> When running ad campaigns across DV360, Google Ads, and Meta Ads, data ends up scattered across different exports. Campaign managers spent hours combining spreadsheets just to answer simple questions like: "Are we on pace to spend the budget?" or "Which ad creative is giving us the best CTR?"
+            </p>
+            <p>
+              <strong>What I Built:</strong> I used SQL to join raw performance data from each channel and calculate key metrics like delivery pacing, eCPM, and click-through rates. Then, I built an interactive Power BI dashboard with visual filters, so anyone can see campaign spend and performance trends in just a few clicks.
+            </p>
+            <p>
+              <strong>The Results:</strong> Cut the time needed to review weekly campaign numbers by about 50%, making it easy to spot underperforming campaigns quickly before budgets are wasted.
+            </p>
+          </div>
+
+          <!-- UI Screenshot / Mockup Preview: Power BI Dashboard Window -->
+          <div class="rounded-lg border border-slate-200/80 dark:border-slate-800 bg-white/95 dark:bg-slate-950/90 shadow-sm overflow-hidden mb-6">
+            <!-- Window Title Bar -->
+            <div class="px-4 py-2.5 bg-slate-50/90 dark:bg-slate-900/90 border-b border-slate-200/70 dark:border-slate-800 flex items-center justify-between text-[11px] font-mono">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-rose-400/80"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-amber-400/80"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400/80"></span>
+                <span class="ml-2 text-slate-600 dark:text-slate-400 text-[11px]">powerbi_service/reports/campaign_qa_pacing_audit</span>
+              </div>
+              <span class="text-blue-600 dark:text-blue-400 text-[10px] flex items-center gap-1 font-medium">
+                <i class="fa-solid fa-chart-simple"></i> Power BI Pro • Live Data Gateway
+              </span>
+            </div>
+
+            <!-- Dashboard Content Snapshot -->
+            <div class="p-4 sm:p-5 space-y-4">
+              <!-- KPI Row -->
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 text-left">
+                <div class="p-2.5 rounded bg-slate-50 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800/80">
+                  <span class="block text-[10px] font-mono text-slate-400 uppercase">Gross Impressions</span>
+                  <span class="text-sm sm:text-base font-mono font-semibold text-slate-900 dark:text-white">14.8M</span>
+                  <span class="text-[10px] font-mono text-emerald-500">Pacing: 101.4% (Optimal)</span>
+                </div>
+                <div class="p-2.5 rounded bg-slate-50 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800/80">
+                  <span class="block text-[10px] font-mono text-slate-400 uppercase">CTR vs Benchmark</span>
+                  <span class="text-sm sm:text-base font-mono font-semibold text-slate-900 dark:text-white">2.34%</span>
+                  <span class="text-[10px] font-mono text-emerald-500">Benchmark: 1.80% (+30%)</span>
+                </div>
+                <div class="p-2.5 rounded bg-slate-50 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800/80">
+                  <span class="block text-[10px] font-mono text-slate-400 uppercase">Blended eCPM</span>
+                  <span class="text-sm sm:text-base font-mono font-semibold text-slate-900 dark:text-white">$3.88</span>
+                  <span class="text-[10px] font-mono text-emerald-500">Planned: $4.20 (-7.6%)</span>
+                </div>
+                <div class="p-2.5 rounded bg-slate-50 dark:bg-slate-900/60 border border-slate-200/60 dark:border-slate-800/80">
+                  <span class="block text-[10px] font-mono text-slate-400 uppercase">Discrepancy QA</span>
+                  <span class="text-sm sm:text-base font-mono font-semibold text-emerald-600 dark:text-emerald-400">0.42%</span>
+                  <span class="text-[10px] font-mono text-slate-500">Tolerance Cap: &lt; 2.0%</span>
+                </div>
+              </div>
+
+              <!-- Graphic Visualizer Area -->
+              <div class="grid grid-cols-1 md:grid-cols-12 gap-3 pt-1">
+                <!-- Trend Line Chart -->
+                <div class="md:col-span-8 p-3 rounded border border-slate-200/60 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40">
+                  <div class="flex items-center justify-between text-[11px] font-mono text-slate-500 mb-2">
+                    <span>Flight Pacing & Cumulative Spend vs Target ($k)</span>
+                    <span class="text-[10px] text-emerald-500 font-semibold">● In-Flight On Track</span>
+                  </div>
+                  <div class="h-28 w-full">
+                    <svg viewBox="0 0 500 110" class="w-full h-full text-blue-500 dark:text-blue-400" preserveAspectRatio="none">
+                      <!-- Grid lines -->
+                      <line x1="0" y1="25" x2="500" y2="25" stroke="currentColor" stroke-opacity="0.1" stroke-dasharray="2,2" />
+                      <line x1="0" y1="55" x2="500" y2="55" stroke="currentColor" stroke-opacity="0.1" stroke-dasharray="2,2" />
+                      <line x1="0" y1="85" x2="500" y2="85" stroke="currentColor" stroke-opacity="0.1" stroke-dasharray="2,2" />
+                      
+                      <!-- Area fill -->
+                      <polygon points="0,95 40,82 80,75 120,68 160,50 200,60 240,42 280,48 320,30 360,35 400,22 440,25 500,15 500,105 0,105" fill="currentColor" fill-opacity="0.12" />
+                      
+                      <!-- Primary trend line -->
+                      <polyline fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"
+                        points="0,95 40,82 80,75 120,68 160,50 200,60 240,42 280,48 320,30 360,35 400,22 440,25 500,15" />
+
+                      <!-- Accent conversion points -->
+                      <circle cx="160" cy="50" r="3.5" fill="#38bdf8" />
+                      <circle cx="320" cy="30" r="3.5" fill="#38bdf8" />
+                      <circle cx="500" cy="15" r="3.5" fill="#10b981" />
+                    </svg>
+                  </div>
+                  <div class="flex justify-between text-[9px] font-mono text-slate-400 mt-1">
+                    <span>Flight Launch</span><span>Mid-Flight Check</span><span>Audited Flight End</span>
+                  </div>
+                </div>
+
+                <!-- Channel Share Breakdown -->
+                <div class="md:col-span-4 p-3 rounded border border-slate-200/60 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40 flex flex-col justify-between">
+                  <div class="text-[11px] font-mono text-slate-500 mb-2">Pacing By Channel</div>
+                  <div class="space-y-2.5 text-xs font-mono">
+                    <div>
+                      <div class="flex justify-between text-[11px] mb-1 text-slate-700 dark:text-slate-300">
+                        <span>DV360 Programmatic</span>
+                        <span class="font-semibold text-emerald-500">101% Pace</span>
+                      </div>
+                      <div class="w-full h-1.5 rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden">
+                        <div class="h-full bg-blue-500 rounded-full" style="width: 100%"></div>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="flex justify-between text-[11px] mb-1 text-slate-700 dark:text-slate-300">
+                        <span>Meta Ads (Video/Feed)</span>
+                        <span class="font-semibold text-emerald-500">99.4% Pace</span>
+                      </div>
+                      <div class="w-full h-1.5 rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden">
+                        <div class="h-full bg-indigo-500 rounded-full" style="width: 99%"></div>
+                      </div>
+                    </div>
+                    <div>
+                      <div class="flex justify-between text-[11px] mb-1 text-slate-700 dark:text-slate-300">
+                        <span>Google Search & Ads</span>
+                        <span class="font-semibold text-emerald-500">102% Pace</span>
+                      </div>
+                      <div class="w-full h-1.5 rounded-full bg-slate-200 dark:bg-slate-800 overflow-hidden">
+                        <div class="h-full bg-emerald-500 rounded-full" style="width: 100%"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-[10px] font-mono text-slate-400 pt-2 text-right">Data Model: Star Schema in Power BI</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Impact Metrics -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div class="p-3 rounded-md border border-slate-200/60 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/40">
+              <span class="block text-[10px] font-mono uppercase text-slate-500">Analysis Time</span>
+              <span class="text-sm font-mono font-semibold text-slate-900 dark:text-white">~50% faster reporting</span>
+            </div>
+            <div class="p-3 rounded-md border border-slate-200/60 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/40">
+              <span class="block text-[10px] font-mono uppercase text-slate-500">Data Quality</span>
+              <span class="text-sm font-mono font-semibold text-slate-900 dark:text-white">&lt;0.5% discrepancy rate</span>
+            </div>
+            <div class="p-3 rounded-md border border-slate-200/60 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/40">
+              <span class="block text-[10px] font-mono uppercase text-slate-500">Platforms Combined</span>
+              <span class="text-sm font-mono font-semibold text-slate-900 dark:text-white">DV360, Google Ads, Meta Ads</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3: Sales & Revenue Analysis (Python + SQL) -->
+        <div class="glass-card rounded-xl p-6 sm:p-7 transition-all duration-200 hover:border-slate-300 dark:hover:border-slate-700">
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-2 mb-4">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="text-[10px] font-mono uppercase px-2 py-0.5 rounded bg-violet-50 dark:bg-violet-950/60 text-violet-700 dark:text-violet-400 border border-violet-200 dark:border-violet-800/80 font-medium">Data Exploration</span>
+                <span class="text-xs font-mono text-slate-500 dark:text-slate-400">Independent Project</span>
+              </div>
+              <h3 class="text-lg font-semibold text-slate-900 dark:text-white mt-2">Sales & Revenue Exploratory Analysis</h3>
+            </div>
+            <div class="text-xs font-mono text-slate-500 dark:text-slate-400">Python • Pandas • SQL</div>
+          </div>
+
+          <div class="space-y-3 mb-5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl">
+            <p>
+              <strong>The Problem:</strong> Raw sales and customer order logs usually come with messy dates, missing product labels, duplicate rows, and outlier prices that make it difficult to trust month-over-month revenue figures.
+            </p>
+            <p>
+              <strong>What I Built:</strong> I wrote a Python script using Pandas to automatically clean up the dataset—filling in missing data, removing duplicates, and filtering out erroneous price points. Then, I used SQL queries (including window functions like LAG and running totals) to track revenue growth by product category and examine customer buying habits.
+            </p>
+            <p>
+              <strong>The Results:</strong> Reduced manual data cleanup work by about 60%, delivering a clean dataset and charts that clearly showed which product lines were driving the most repeat sales.
+            </p>
+          </div>
+
+          <!-- UI Screenshot / Mockup Preview: Jupyter / Python Data Pipeline Window -->
+          <div class="rounded-lg border border-slate-200/80 dark:border-slate-800 bg-[#0d1117] text-slate-200 shadow-sm overflow-hidden mb-6">
+            <!-- Terminal / Code Editor Title Bar -->
+            <div class="px-4 py-2 bg-[#161b22] border-b border-slate-800 flex items-center justify-between text-[11px] font-mono">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
+                <span class="ml-2 text-slate-400 text-[11px]">revenue_etl_pipeline.py — Jupyter Notebook [Python 3.11]</span>
+              </div>
+              <span class="text-emerald-400 text-[10px] font-mono">Status: Kernel Executed</span>
+            </div>
+
+            <!-- Terminal / Notebook Code & Output Mockup -->
+            <div class="p-4 sm:p-5 font-mono text-[11px] space-y-3">
+              <!-- Code block preview -->
+              <div class="text-slate-400">
+                <span class="text-slate-500"># 1. Advanced SQL Window Transformation: Monthly Growth & Running Totals</span><br>
+                <span class="text-pink-400">SELECT</span> order_date, category,<br>
+                &nbsp;&nbsp;SUM(revenue) <span class="text-pink-400">AS</span> total_rev,<br>
+                &nbsp;&nbsp;LAG(SUM(revenue)) <span class="text-pink-400">OVER</span> (<span class="text-pink-400">PARTITION BY</span> category <span class="text-pink-400">ORDER BY</span> order_date) <span class="text-pink-400">AS</span> prev_rev,<br>
+                &nbsp;&nbsp;ROUND(100.0 * (SUM(revenue) - LAG(SUM(revenue)) <span class="text-pink-400">OVER</span> (<span class="text-pink-400">PARTITION BY</span> category <span class="text-pink-400">ORDER BY</span> order_date)) / LAG(SUM(revenue)) <span class="text-pink-400">OVER</span> (...), 2) <span class="text-pink-400">AS</span> mom_growth_pct<br>
+                <span class="text-pink-400">FROM</span> transactions_staging <span class="text-pink-400">GROUP BY</span> 1, 2;
+              </div>
+
+              <!-- Pipeline Output Badge & Mini-Chart -->
+              <div class="pt-2 border-t border-slate-800">
+                <div class="flex items-center justify-between text-[10px] text-slate-400 mb-2">
+                  <span>OUT [2]: Data Pipeline Metrics (52,410 Records Cleaned)</span>
+                  <span class="text-emerald-400">✓ Deduplication & Outlier Removal: Success</span>
+                </div>
+
+                <!-- Mini Bar Graph inside code terminal -->
+                <div class="space-y-1.5 pt-1">
+                  <div class="flex items-center gap-2">
+                    <span class="w-28 text-[10px] text-slate-300">Tier 1: Enterprise</span>
+                    <div class="flex-1 bg-slate-800 h-2 rounded overflow-hidden">
+                      <div class="bg-gradient-to-r from-blue-500 to-indigo-500 h-full rounded" style="width: 84%"></div>
+                    </div>
+                    <span class="w-16 text-right text-[10px] text-slate-300 font-semibold">$542.8k <span class="text-emerald-400 text-[9px]">(+14%)</span></span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="w-28 text-[10px] text-slate-300">Tier 2: Growth Mid</span>
+                    <div class="flex-1 bg-slate-800 h-2 rounded overflow-hidden">
+                      <div class="bg-gradient-to-r from-blue-500 to-indigo-500 h-full rounded" style="width: 63%"></div>
+                    </div>
+                    <span class="w-16 text-right text-[10px] text-slate-300 font-semibold">$324.6k <span class="text-emerald-400 text-[9px]">(+9%)</span></span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="w-28 text-[10px] text-slate-300">Tier 3: Retail Core</span>
+                    <div class="flex-1 bg-slate-800 h-2 rounded overflow-hidden">
+                      <div class="bg-gradient-to-r from-blue-500 to-indigo-500 h-full rounded" style="width: 42%"></div>
+                    </div>
+                    <span class="w-16 text-right text-[10px] text-slate-300 font-semibold">$198.3k <span class="text-slate-400 text-[9px]">(Flat)</span></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Impact Metrics -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div class="p-3 rounded-md border border-slate-200/60 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/40">
+              <span class="block text-[10px] font-mono uppercase text-slate-500">Cleanup Effort</span>
+              <span class="text-sm font-mono font-semibold text-slate-900 dark:text-white">~60% less manual wrangling</span>
+            </div>
+            <div class="p-3 rounded-md border border-slate-200/60 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/40">
+              <span class="block text-[10px] font-mono uppercase text-slate-500">Dataset Scope</span>
+              <span class="text-sm font-mono font-semibold text-slate-900 dark:text-white">50k+ transactions cleaned</span>
+            </div>
+            <div class="p-3 rounded-md border border-slate-200/60 dark:border-slate-800 bg-slate-50/70 dark:bg-slate-950/40">
+              <span class="block text-[10px] font-mono uppercase text-slate-500">Techniques Used</span>
+              <span class="text-sm font-mono font-semibold text-slate-900 dark:text-white">Python, Pandas & SQL Windowing</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 5. HONORS, CERTIFICATIONS & ACADEMICS -->
+    <section id="credentials" class="py-14 hairline-t">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <!-- Left: Honors & Awards -->
+        <div class="space-y-5">
+          <div class="space-y-1">
+            <h2 class="text-xs font-mono uppercase tracking-widest text-slate-500 dark:text-slate-400">Awards & Recognition</h2>
+            <h3 class="text-base font-semibold text-slate-900 dark:text-white">Honors</h3>
+          </div>
+
+          <div class="glass-card rounded-lg p-5 space-y-4">
+            
+            <div class="space-y-1 pb-4 hairline-b">
+              <div class="flex items-center justify-between">
+                <span class="text-sm font-semibold text-slate-900 dark:text-white">SPOT Award (3x Recipient)</span>
+                <span class="text-[11px] font-mono text-slate-500">MediaMint</span>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed pt-1">
+                Awarded three times for maintaining 100% quality scores on campaign audits, hitting targets ahead of schedule, and supporting the team.
+              </p>
+            </div>
+
+            <div class="space-y-1">
+              <div class="flex items-center justify-between">
+                <span class="text-sm font-semibold text-slate-900 dark:text-white">Top 10 Idea Finalist</span>
+                <span class="text-[11px] font-mono text-slate-500">Company Ideathon</span>
+              </div>
+              <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed pt-1">
+                Selected among the top 10 ideas across MediaMint for designing the automated email and SLA tracker.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Right: Certifications & Education -->
+        <div class="space-y-5">
+          <div class="space-y-1">
+            <h2 class="text-xs font-mono uppercase tracking-widest text-slate-500 dark:text-slate-400">Certifications & Education</h2>
+            <h3 class="text-base font-semibold text-slate-900 dark:text-white">Background</h3>
+          </div>
+
+          <div class="glass-card rounded-lg p-5 space-y-4">
+            
+            <div class="space-y-1 pb-4 hairline-b">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold text-slate-900 dark:text-white">Google Data Analytics Professional Certificate</span>
+                <span class="text-[10px] font-mono text-slate-500">Google</span>
+              </div>
+              <p class="text-[11px] text-slate-500">Practical training in SQL, Python, Excel, data cleaning, and data visualization.</p>
+            </div>
+
+            <div class="space-y-1 pb-4 hairline-b">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold text-slate-900 dark:text-white">Google Cloud Skills Boost</span>
+                <span class="text-[10px] font-mono text-slate-500">11/2025 — Present</span>
+              </div>
+              <p class="text-[11px] text-slate-500">Hands-on labs and foundational cloud data tools training.</p>
+            </div>
+
+            <div class="space-y-1">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-semibold text-slate-900 dark:text-white">Master of Computer Applications (MCA)</span>
+                <span class="text-[10px] font-mono text-slate-500">2021 — 2023</span>
+              </div>
+              <p class="text-[11px] text-slate-500">Siksha 'O' Anusandhan (SOA) University • Bhubaneswar</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 6. CONTACT & FOOTER -->
+    <section id="contact" class="py-16 hairline-t">
+      <div class="glass-card rounded-lg p-8 sm:p-10 flex flex-col md:flex-row md:items-center justify-between gap-8">
+        
+        <div class="space-y-2 max-w-xl">
+          <h3 class="text-lg font-semibold text-slate-900 dark:text-white">Let's Connect</h3>
+          <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+            Have an open role, a project in mind, or just want to chat about data? I'd love to connect. I'm actively looking for full-time opportunities as a Data Analyst or BI Analyst.
+          </p>
+          <div class="pt-2 flex flex-wrap gap-4 text-xs font-mono text-slate-500">
+            <span>Phone: +91 8249364841</span>
+            <span>•</span>
+            <span>Location: Rourkela / Open to Remote & Relocation</span>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-stretch gap-2.5">
+          <a href="mailto:popunbarik9@gmail.com" class="px-4 py-2.5 rounded-md bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-900 text-xs font-medium text-center transition-all flex items-center justify-center gap-2 shadow-sm">
+            <i class="fa-regular fa-envelope"></i>
+            <span>Send Email</span>
+          </a>
+
+          <button onclick="copyToClipboard('popunbarik9@gmail.com', 'Email copied to clipboard')" class="px-4 py-2.5 rounded-md border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/80 text-slate-700 dark:text-slate-300 text-xs font-medium text-center hover:bg-white dark:hover:bg-slate-800 transition-colors flex items-center justify-center gap-2 shadow-sm">
+            <i class="fa-regular fa-copy"></i>
+            <span>Copy Address</span>
+          </button>
+
+          <a href="https://linkedin.com/in/papun-barik" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-md border border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/80 text-slate-700 dark:text-slate-300 text-xs font-medium text-center hover:bg-white dark:hover:bg-slate-800 transition-colors flex items-center justify-center gap-2 shadow-sm">
+            <i class="fa-brands fa-linkedin text-[#0077b5]"></i>
+            <span>LinkedIn</span>
+          </a>
+        </div>
+
+      </div>
+
+      <div class="pt-10 pb-6 flex flex-col sm:flex-row items-center justify-between text-[11px] font-mono text-slate-500 dark:text-slate-400 gap-4">
+        <div>© <span id="current-year"></span> Papun Barik. Built with clean code & curiosity.</div>
+        <div class="flex items-center gap-4">
+          <a href="#hero" class="hover:text-slate-800 dark:hover:text-slate-200 transition-colors">Back to top ↑</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // Current year stamp
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    // Mobile Navigation Toggle
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const mobileNav = document.getElementById('mobile-nav');
+    mobileToggle.addEventListener('click', () => {
+      mobileNav.classList.toggle('hidden');
+    });
+
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => mobileNav.classList.add('hidden'));
+    });
+
+    // Dark Mode / Theme Toggle
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    
+    // Check saved preference or default to light
+    const isDark = localStorage.getItem('theme') === 'dark';
+    if (isDark) {
+      document.documentElement.classList.add('dark');
+      themeIcon.className = 'fa-regular fa-sun';
+    } else {
+      document.documentElement.classList.remove('dark');
+      themeIcon.className = 'fa-regular fa-moon';
+    }
+
+    themeToggle.addEventListener('click', () => {
+      const willBeDark = !document.documentElement.classList.contains('dark');
+      if (willBeDark) {
+        document.documentElement.classList.add('dark');
+        themeIcon.className = 'fa-regular fa-sun';
+        localStorage.setItem('theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+        themeIcon.className = 'fa-regular fa-moon';
+        localStorage.setItem('theme', 'light');
+      }
+    });
+
+    // Copy to clipboard helper
+    function copyToClipboard(text, message) {
+      const el = document.createElement('textarea');
+      el.value = text;
+      el.setAttribute('readonly', '');
+      el.style.position = 'absolute';
+      el.style.left = '-9999px';
+      document.body.appendChild(el);
+      el.select();
+      
+      try {
+        document.execCommand('copy');
+        showToast(message || 'Copied to clipboard');
+      } catch (err) {
+        showToast(text);
+      }
+      
+      document.body.removeChild(el);
+    }
+
+    // Toast handler
+    function showToast(text) {
+      const toast = document.getElementById('toast');
+      const toastText = document.getElementById('toast-text');
+      toastText.textContent = text;
+      
+      toast.classList.remove('translate-y-16', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+      
+      setTimeout(() => {
+        toast.classList.add('translate-y-16', 'opacity-0');
+        toast.classList.remove('translate-y-0', 'opacity-100');
+      }, 3000);
+    }
+  </script>
+</body>
+</html>
